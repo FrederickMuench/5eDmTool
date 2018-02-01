@@ -1,0 +1,18 @@
+li {
+  list-style-type: none;
+}
+
+select {
+  width: 100%;
+}
+
+.creatures {
+  float:left;
+  display:inline;
+  width: 10%;
+  list-style-type: none;
+}
+
+
+
+

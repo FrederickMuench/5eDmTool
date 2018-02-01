@@ -1,0 +1,7 @@
+.creature-details {
+  float:left;
+  display:inline;
+  width: 40%;
+  list-style-type: none;
+  margin-left: 80px;
+}

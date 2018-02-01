@@ -1,0 +1,21 @@
+<h1>GM-TOOL</h1>
+
+<div class="creatures">
+  <ul>
+    <li *ngFor="let creature of listedCreatures" (click)="onCreatureSelect(creature)">
+      {{creature.name}}
+    </li>
+    <select  [(ngModel)]="selectedCreature">
+      <option *ngFor="let monster of this.allMonsters" [ngValue]="monster">{{monster['name']}}</option>
+    </select>
+    <button (click)="onAddButtonClick()">+</button>
+    <button (click)="onDeleteButtonClick()">-</button>
+  </ul>
+</div>
+
+<app-creature-detail [creature]="selectedCreature"></app-creature-detail>
+
+
+
+
+
