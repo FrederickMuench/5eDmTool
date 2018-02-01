@@ -1,60 +1,73 @@
-<ul *ngIf="creature" class="creature-details" >
-  <!--<li *ngFor="let entry of creature | keys">-->
-    <!--{{entry.key | uppercase }}: {{entry.value}}-->
-  <!--</li>-->
-  <li>{{creature.name}}</li>
-  <li>{{creature.size}}</li>
+<div *ngIf="creature" class="creature-details">
+  <h1>{{creature.name}}</h1>
+  <div>{{creature.size}} {{creature.type}} {{creature.subtype}}, {{creature.alignment}}</div>
 
-  <li>{{creature.armor_class}}</li>
-  <li>Armor Class {{creature.armor_class}}</li>
-  <li>Hit Points {{creature.hit_points}}</li>
-  <li>Speed {{creature.speed}}</li>
-
-  <div class="stats">
-    <div>STR {{creature.strength}}</div>
-    <div>DEX {{creature.dexterity}}</div>
-    <div>CON {{creature.constitution}}</div>
-    <div>INT {{creature.intelligence}}</div>
-    <div>WIS {{creature.wisdom}}</div>
-    <div>CHA {{creature.charisma}}</div>
+  <div class="basic">
+    <div>Armor Class {{creature.armor_class}}</div>
+    <div>Hit Points {{creature.hit_points}}</div>
+    <div>Speed {{creature.speed}}</div>
   </div>
 
-  <div class="savingThrows">
-    <div *ngIf="creature.strength_save">Str +{{creature.strength_save}}</div>
-    <div *ngIf="creature.dexterity_save">Dex +{{creature.strength_save}}</div>
-    <div *ngIf="creature.constitution_save">Con +{{creature.strength_save}}</div>
-    <div *ngIf="creature.intelligence_save">Int +{{creature.strength_save}}</div>
-    <div *ngIf="creature.wisdom_save">Wis +{{creature.strength_save}}</div>
-    <div *ngIf="creature.charisma_save">Cha +{{creature.strength_save}}</div>
+  <div class="ability-scores">
+    <div class="score">
+      <div>STR</div>
+      {{creature.strength}}
+    </div>
+    <div class="score">
+      <div>DEX</div>
+      {{creature.dexterity}}
+    </div>
+    <div class="score">
+      <div>CON</div>
+      {{creature.constitution}}
+    </div>
+    <div class="score">
+      <div>INT</div>
+      {{creature.intelligence}}
+    </div>
+    <div class="score">
+      <div>WIS</div>
+      {{creature.wisdom}}
+    </div>
+    <div class="score">
+      <div>CHA</div>
+      {{creature.charisma}}
+    </div>
   </div>
 
+  <div class="abilities">
+    <div class="savingThrows">
+      <div> Saving Throws:</div>
+      <div *ngIf="creature.strength_save">Str +{{creature.strength_save}},</div>
+      <div *ngIf="creature.dexterity_save"> Dex +{{creature.dexterity_save}},</div>
+      <div *ngIf="creature.constitution_save"> Con +{{creature.constitution_save}},</div>
+      <div *ngIf="creature.intelligence_save"> Int +{{creature.intelligence_save}},</div>
+      <div *ngIf="creature.wisdom_save"> Wis +{{creature.wisdom_save}},</div>
+      <div *ngIf="creature.charisma_save"> Cha +{{creature.charisma_save}}</div>
+    </div>
+    <div style="width: 100%; float: none;">
+      <div *ngIf="creature.skills">Skills:</div>
+      <div *ngIf="creature.damage_resistances">Damage Resistances: {{creature.damage_resistances}}</div>
+      <div *ngIf="creature.damage_immunities">Damage Immunities: {{creature.damage_immunities}}</div>
+      <div *ngIf="creature.condition_immunities">Condition Immunities: {{creature.condition_immunities}}</div>
+      <div *ngIf="creature.senses">Senses: {{creature.senses}}</div>
+      <div *ngIf="creature.languages">Languages: {{creature.languages}}</div>
+      <div *ngIf="creature.challenge_rating">Challenge: {{creature.challenge_rating}}</div>
+    </div>
+  </div>
 
+  <div class="special-abilities" *ngIf="creature.special_abilities">
+    <div *ngFor="let entry of creature['special_abilities']" (cdivck)="onSelectAbility(entry)">
+      <p><b>{{entry["name"]}}.</b> {{entry["desc"]}}</p>
+    </div>
+  </div>
 
-</ul>
-<div *ngIf="creature" class="actions">
-  ACTIONS:
-  <ul>
-    <li *ngFor="let entry of creature['actions']" (click)="onSelectAbility(entry)">
-      <div>
-        {{entry["name"]}}
-      </div>
-      <div>
-        {{entry["desc"]}}
-      </div>
-    </li>
-  </ul>
+  <div *ngIf="creature" class="actions">
+    <h3>Actions</h3>
+    <div class="test" *ngFor="let entry of creature['actions']" (cdivck)="onSelectAbility(entry)">
+      <p><b>{{entry["name"]}}.</b> {{entry["desc"]}}</p>
+    </div>
+  </div>
 
-  SPECIAL ABILITIES:
-  <ul>
-    <li *ngFor="let entry of creature['special_abilities']" (click)="onSelectAbility(entry)">
-      <div>
-        {{entry["name"]}}
-      </div>
-      <div>
-        {{entry["desc"]}}
-      </div>
-    </li>
-  </ul>
+  <!--<app-ability-detail [ability]="selectedAbility"></app-ability-detail>-->
 </div>
-
-<app-ability-detail [ability]="selectedAbility"></app-ability-detail>

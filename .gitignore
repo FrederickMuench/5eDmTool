@@ -41,3 +41,11 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/angular-electron-win32-x64/
+angular-electron-win32-x64/resources/app/src/
+src/app/spell-detail/
+src/app/spells/spells.component.css
+src/app/spells/spells.component.html
+src/app/spells/spells.component.spec.ts
+src/app/spells/spells.component.ts
+src/mocks/

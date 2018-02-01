@@ -1,18 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-}
-.one {
-  grid-column: 1;
-  grid-row: 1 / 3;
-}
-.two {
-  rid-column: 2;
-  grid-row: 1 / 3;
-}
-.three {
-  rid-column: 2;
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  overflow: auto;
 }

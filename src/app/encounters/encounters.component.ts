@@ -22,6 +22,7 @@ export class EncountersComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.selectedCreature = this.encounters[0];
   }
 
 

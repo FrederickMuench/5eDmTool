@@ -1,7 +1,51 @@
 .creature-details {
-  float:left;
-  display:inline;
-  width: 40%;
-  list-style-type: none;
-  margin-left: 80px;
+  padding-left: 180px;
+  margin-top: -80px;
+  background-color: white;
+  height: 100%;
+  position: absolute;
+}
+
+.creature-details > * {
+  margin: 10px;
+  padding: 5px;
+  background-color: #384454;
+  color: white;
+  border-radius: 5px;
+}
+
+.creature-details > * > * {
+  margin: 10px;
+}
+
+.ability-scores{
+  overflow: hidden;
+}
+
+.score {
+  float: left;
+  width: 40px;
+}
+
+.abilities {
+  float: none;
+}
+
+.savingThrows {
+  width: 100%;
+  float: left;
+}
+
+.savingThrows div{
+  float: left;
+  margin-right: 10px;
+}
+
+.special-abilities {
+}
+.special-ability {
+  float: left;
+}
+
+.actions {
 }

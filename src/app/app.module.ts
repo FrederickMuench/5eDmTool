@@ -1,24 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms'; // <-- here
-import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { FormsModule } from '@angular/forms';
 import { EncountersComponent } from './encounters/encounters.component';
-import {KeysPipe} from "./encounters/keysPipe";
 import { CreatureDetailComponent } from './creature-detail/creature-detail.component';
-import { AbilityDetailComponent } from './ability-detail/ability-detail.component'; // <-- here
+import { AbilityDetailComponent } from './ability-detail/ability-detail.component';
+import { SpellsComponent } from './spells/spells.component';
+import {FilterPipe} from "./spells/filter.pipe";
+import { SpellDetailComponent } from './spell-detail/spell-detail.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     EncountersComponent,
-    KeysPipe,
     CreatureDetailComponent,
-    AbilityDetailComponent
+    AbilityDetailComponent,
+    SpellsComponent,
+    FilterPipe,
+    SpellDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RoundProgressModule
   ],
   providers: [],
   bootstrap: [AppComponent]
