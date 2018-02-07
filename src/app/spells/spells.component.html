@@ -1,0 +1,14 @@
+<div class="spells">
+  <li *ngFor="let spell of this.savedSpells" (click)="onSpellSelect(spell)">
+    <span class="text">{{spell.name}}</span>
+  </li>
+  <button class="add-button" (click)="onAddSpell()">+</button>
+  <button class="delete-button" (click)="onDeleteSpell()">-</button>
+  <input [(ngModel)]="searchText" placeholder="Zaubersuche">
+  <li *ngFor="let spell of this.spells  | filter : searchText" (click)="onSpellSelect(spell)">
+    {{spell.name}}
+  </li>
+</div>
+
+<app-spell-detail [spell]="selectedSpell"></app-spell-detail>
+

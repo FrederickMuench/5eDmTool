@@ -1,16 +1,17 @@
-<h1>GM-TOOL</h1>
-
 <div class="creatures">
-
-  <li class="creature" *ngFor="let creature of listedCreatures" (click)="onCreatureSelect(creature)">
+  <li *ngFor="let creature of listedCreatures" (click)="onCreatureSelect(creature)">
     <span class="text">{{creature.name}}</span>
   </li>
 
   <button class="add-button" (click)="onAddButtonClick()">+</button>
   <button class="delete-button" (click)="onDeleteButtonClick()">-</button>
-  <select [(ngModel)]="selectedCreature">
+  <!--<select [(ngModel)]="selectedCreature">
     <option *ngFor="let monster of this.allMonsters" [ngValue]="monster">{{monster['name']}}</option>
-  </select>
+  </select>-->
+  <input [(ngModel)]="searchText" placeholder="Search for Creature">
+  <li *ngFor="let monster of this.allMonsters  | filter : searchText" (click)="onCreatureSelect(monster)">
+    {{monster.name}}
+  </li>
 
 </div>
 

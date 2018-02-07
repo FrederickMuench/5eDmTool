@@ -20,4 +20,8 @@ export class CreatureDetailComponent implements OnInit {
     this.selectedAbility = ability;
   }
 
+  isArray(obj : any ) {
+    return Array.isArray(obj);
+  }
+
 }

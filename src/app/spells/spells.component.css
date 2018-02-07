@@ -1,9 +1,9 @@
-.creatures {
+.spells{
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 180px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
-  top: 0;
+  top: 0; /* Stay at the top */
   left: 0;
   background-color: #384454; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
@@ -11,27 +11,28 @@
   font-size: 14px;
 }
 
-li {
-  list-style-type: none;
-}
-
-.creatures li {
+.spells li {
+  list-style: none;
   cursor: pointer;
   position: relative;
-  left: 8px;
   background-color: White;
   margin: .5em;
+  left: 8px;
   /*padding: .5em;*/
   height: 2.6em;
   border-radius: 4px;
   width: 150px;
 }
 
-.creatures li:hover {
-  color: #607D8B;
-  color: rgb(0,120,215);
-  background-color: #DDD;
-  left: .1em;
+.text {
+  position: relative;
+  left: 10px;
+  top: 2px;
+  text-align-all: center;
+}
+
+li {
+  list-style-type: none;
 }
 
 .text {
@@ -42,7 +43,7 @@ li {
 }
 
 input {
-  width: 150px;
+  width: 145px;
   margin-left: 15px;
   height: 2.6em;
   background-color: white;
@@ -80,3 +81,9 @@ input {
   color: white;
 }
 
+.spells li:hover {
+  color: #607D8B;
+  color: rgb(0, 120, 215);
+  background-color: #DDD;
+  left: .1em;
+}

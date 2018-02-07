@@ -1,10 +1,8 @@
-import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
-import { Encounter } from '../classes/encounter';
-import { Creature } from '../classes/creature';
-import { Spell } from '../classes/spells';
+import {Component, Inject, OnInit, Pipe, PipeTransform} from '@angular/core';
 import { allSpells } from './spells';
 import { allMonsters } from './monsters';
-import { KeysPipe} from './keysPipe';
+import {Creature} from '../../../angular-electron-win32-x64/resources/app/src/app/classes/creature';
+import {CreatureService} from '../creature.service';
 
 @Component({
   selector: 'app-encounters',
@@ -12,17 +10,16 @@ import { KeysPipe} from './keysPipe';
   styleUrls: ['./encounters.component.css']
 })
 export class EncountersComponent implements OnInit {
-  listedCreatures: any = [allMonsters[0]];
+  listedCreatures: any = [];
   selectedCreature: any;
-  selectedSpell: Spell;
   allSpells: any = allSpells;
   allMonsters: any = allMonsters;
-  encounters: any = [allMonsters[0]];
+  encounters: any = [];
 
-  constructor() { }
+  constructor( private creatureService: CreatureService ) {}
 
   ngOnInit() {
-    this.selectedCreature = this.encounters[0];
+    this.listedCreatures = this.creatureService.listedCreatures;
   }
 
 
@@ -31,13 +28,9 @@ export class EncountersComponent implements OnInit {
     console.log(this.selectedCreature.name);
   }
 
-  onSpellSelect(spell: Spell): void {
-    console.log(spell.name);
-    this.selectedSpell = spell;
-  }
 
   onAddButtonClick(): void {
-    this.listedCreatures.push(this.selectedCreature);
+    this.creatureService.listedCreatures.push(this.selectedCreature);
   }
 
   onDeleteButtonClick(): void {

@@ -1,73 +1,84 @@
 <div *ngIf="creature" class="creature-details">
   <h1>{{creature.name}}</h1>
-  <div>{{creature.size}} {{creature.type}} {{creature.subtype}}, {{creature.alignment}}</div>
+  <div>Size {{creature.size}}, {{creature.type}}, {{creature.alignment}}</div>
 
   <div class="basic">
-    <div>Armor Class {{creature.armor_class}}</div>
-    <div>Hit Points {{creature.hit_points}}</div>
+    <div>Armor Class {{creature.ac}}</div>
+    <div>Hit Points {{creature.hp}}</div>
     <div>Speed {{creature.speed}}</div>
   </div>
 
   <div class="ability-scores">
     <div class="score">
       <div>STR</div>
-      {{creature.strength}}
+      {{creature.str}}
     </div>
     <div class="score">
       <div>DEX</div>
-      {{creature.dexterity}}
+      {{creature.dex}}
     </div>
     <div class="score">
       <div>CON</div>
-      {{creature.constitution}}
+      {{creature.con}}
     </div>
     <div class="score">
       <div>INT</div>
-      {{creature.intelligence}}
+      {{creature.int}}
     </div>
     <div class="score">
       <div>WIS</div>
-      {{creature.wisdom}}
+      {{creature.wis}}
     </div>
     <div class="score">
       <div>CHA</div>
-      {{creature.charisma}}
+      {{creature.cha}}
     </div>
   </div>
 
   <div class="abilities">
     <div class="savingThrows">
       <div> Saving Throws:</div>
-      <div *ngIf="creature.strength_save">Str +{{creature.strength_save}},</div>
-      <div *ngIf="creature.dexterity_save"> Dex +{{creature.dexterity_save}},</div>
-      <div *ngIf="creature.constitution_save"> Con +{{creature.constitution_save}},</div>
-      <div *ngIf="creature.intelligence_save"> Int +{{creature.intelligence_save}},</div>
-      <div *ngIf="creature.wisdom_save"> Wis +{{creature.wisdom_save}},</div>
-      <div *ngIf="creature.charisma_save"> Cha +{{creature.charisma_save}}</div>
+      <div *ngIf="creature.save">Str +{{creature.save}},</div>
     </div>
     <div style="width: 100%; float: none;">
-      <div *ngIf="creature.skills">Skills:</div>
-      <div *ngIf="creature.damage_resistances">Damage Resistances: {{creature.damage_resistances}}</div>
-      <div *ngIf="creature.damage_immunities">Damage Immunities: {{creature.damage_immunities}}</div>
-      <div *ngIf="creature.condition_immunities">Condition Immunities: {{creature.condition_immunities}}</div>
+      <div *ngIf="creature.skill">Skills:</div>
+      <div *ngIf="creature.resist">Damage Resistances: {{creature.resist}}</div>
+      <div *ngIf="creature.immune">Damage Immunities: {{creature.immune}}</div>
+      <div *ngIf="creature.conditionImmune">Condition Immunities: {{creature.conditionImmune}}</div>
       <div *ngIf="creature.senses">Senses: {{creature.senses}}</div>
+      <div *ngIf="creature.passive">Passiv: {{creature.passive}}</div>
       <div *ngIf="creature.languages">Languages: {{creature.languages}}</div>
-      <div *ngIf="creature.challenge_rating">Challenge: {{creature.challenge_rating}}</div>
+      <div *ngIf="creature.cr">Challenge: {{creature.cr}}</div>
     </div>
   </div>
 
-  <div class="special-abilities" *ngIf="creature.special_abilities">
-    <div *ngFor="let entry of creature['special_abilities']" (cdivck)="onSelectAbility(entry)">
-      <p><b>{{entry["name"]}}.</b> {{entry["desc"]}}</p>
+  <div class="trait" *ngIf="creature.trait && isArray(creature.trait)">
+    <h3>Traits</h3>
+    <div *ngFor="let trait of creature['trait']" (cdivck)="onSelectAbility(trait)">
+      <p><b>{{trait["name"]}}.</b> {{trait["text"]}}</p>
     </div>
   </div>
 
-  <div *ngIf="creature" class="actions">
+  <div class="trait" *ngIf="creature.trait && !isArray(creature.trait)">
+    <h3>Traits</h3>
+    <p><b>{{creature.trait.name}}.</b> {{creature.trait.text}}</p>
+  </div>
+
+  <div *ngIf="creature.action && isArray(creature.action)" class="actions">
     <h3>Actions</h3>
-    <div class="test" *ngFor="let entry of creature['actions']" (cdivck)="onSelectAbility(entry)">
-      <p><b>{{entry["name"]}}.</b> {{entry["desc"]}}</p>
+    <div class="test" *ngFor="let action of creature['action']">
+      <p><b>{{action.name}}.</b> {{action.text}}</p>  {{action.attack}}
     </div>
   </div>
 
-  <!--<app-ability-detail [ability]="selectedAbility"></app-ability-detail>-->
+  <div *ngIf="creature.action && !isArray(creature.action)" class="actions">
+    <h3>Actions</h3>
+      <p><b>{{creature.action.name}}.</b> {{creature.action.text}}</p>
+      <p>{{creature.action.attack}}</p>
+  </div>
+
+  <div *ngIf="creature['spells']" class="actions">
+    <h3>Spells</h3>
+    <div class="test">{{creature['spells']}}</div>
+  </div>
 </div>

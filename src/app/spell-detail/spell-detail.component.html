@@ -1,0 +1,17 @@
+<div class="spell-details" *ngIf="spell">
+  <div>Name: {{spell.name}}</div>
+  <div>Level: {{spell.level}}</div>
+  <div>School: {{spell.school}}</div>
+  <div>Ritual: {{spell.ritual}}</div>
+
+  <div>Casting Time:{{spell.casting_time}}</div>
+  <div>Range: {{spell.range}}</div>
+  <div>Components: {{spell.components}}</div>
+  <div>Duration: {{spell.duration}}</div>
+  <div>Concentration: {{spell.concentration}}</div>
+
+  <div>{{spell.desc}}</div>
+  <div>{{spell.higher_level}}</div>
+
+  <div>{{spell.class}}</div>
+</div>

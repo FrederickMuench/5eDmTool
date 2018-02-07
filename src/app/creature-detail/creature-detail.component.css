@@ -1,9 +1,10 @@
 .creature-details {
   padding-left: 180px;
-  margin-top: -80px;
   background-color: white;
   height: 100%;
   position: absolute;
+  z-index: 0;
+  top: 70px;
 }
 
 .creature-details > * {

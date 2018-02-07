@@ -1,0 +1,21 @@
+.spell-details {
+  padding-left: 180px;
+  background-color: white;
+  height: 100%;
+  position: absolute;
+  top: 80px;
+}
+
+.spell-details > * {
+  margin: 10px;
+  padding: 5px;
+  background-color: #384454;
+  color: white;
+  border-radius: 5px;
+}
+
+.spell-details > * > * {
+  margin: 10px;
+}
+
+
